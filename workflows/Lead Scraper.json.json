@@ -1,0 +1,1705 @@
+{
+  "name": "Lead Scraper",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -912,
+        144
+      ],
+      "id": "88e84d73-b6bc-458d-9e2c-d8e2279d4e2f",
+      "name": "🟢 Trigger: Start Scraper"
+    },
+    {
+      "parameters": {
+        "content": "## Notes -   Lead  Generation (Phase - 1)        \n\n1. first step to schedule a trigger to start. \n\n2. SerApi is used third party which fetch google data APi with  less configuration and less complexity but gives output in 1 item all in JSON output how APi talks to system.\n\n3. merge node to merge all leads. \n\n4. code node  in js as the lead is dynamically different like text phone and to categorize as well the data that makes into real CRM based system as phone address status which normal APi fetching can not do it . like also fixing cafe as name pubs as category \n\n5. i connect google sheets node append version so it can add accordingly with field which add in json formate as n8n works in json formate as well as to dynamically adjust ",
+        "height": 448,
+        "width": 464
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1552,
+        -256
+      ],
+      "typeVersion": 1,
+      "id": "5b226bf4-1514-4e66-868f-009dad64975d",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "operation": "google_maps",
+        "q": "cafes in Indiranagar Bangalore ",
+        "additionalFields": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-serpapi.serpApi",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        -144
+      ],
+      "id": "2aa214b0-19f4-4219-b0c3-714d6f084cfc",
+      "name": "Fetch_Cafes",
+      "credentials": {
+        "serpApi": {
+          "id": "IVz0lIbT0ruWbDxG",
+          "name": "SerpApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "google_maps",
+        "q": "pubs in Indiranagar Bangalore ",
+        "additionalFields": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-serpapi.serpApi",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        48
+      ],
+      "id": "ba94c7fd-414d-4b28-a7e0-0cc3e82a0bb8",
+      "name": "Fetch_pubs",
+      "credentials": {
+        "serpApi": {
+          "id": "IVz0lIbT0ruWbDxG",
+          "name": "SerpApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "google_maps",
+        "q": "cloud kitchen in Indiranagar Bangalore ",
+        "additionalFields": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-serpapi.serpApi",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        240
+      ],
+      "id": "4b08a376-74aa-4bda-bf70-762f3f8840ad",
+      "name": "Fetch_cloud_kitchen",
+      "credentials": {
+        "serpApi": {
+          "id": "IVz0lIbT0ruWbDxG",
+          "name": "SerpApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "google_maps",
+        "q": "restaurants in Indiranagar Bangalore ",
+        "additionalFields": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-serpapi.serpApi",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        432
+      ],
+      "id": "51493dc2-03a0-4822-9fc7-df1f1c26c5e4",
+      "name": "Fetch_Restaurants",
+      "credentials": {
+        "serpApi": {
+          "id": "IVz0lIbT0ruWbDxG",
+          "name": "SerpApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "numberInputs": 4
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -416,
+        112
+      ],
+      "id": "9f22dbd3-3b23-4621-b29d-87e198ab96e9",
+      "name": "Merge_All_Leads"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -864,
+        656
+      ],
+      "id": "edbf8bf7-3511-4cf5-9378-afa55ad3ca99",
+      "name": "Lead Manager Trigger"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg",
+          "mode": "list",
+          "cachedResultName": "leads_db",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -640,
+        656
+      ],
+      "id": "03b85de1-8809-4539-b41e-38f6be6ec3e4",
+      "name": "Fetch_Leads(Read_Rows)",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "w59lxKi4GkNMnhT5",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Collect results from ALL merged inputs\nlet allResults = [];\n\nfor (const item of items) {\n  if (item.json.local_results) {\n    allResults = allResults.concat(item.json.local_results);\n  }\n}\n\nreturn allResults.map(d => {\n\n  // Extract fields safely\n  const name = (d.title || \"\").toString().trim();\n  const address = (d.address || \"\").toString().trim();\n  const rating = parseFloat(d.rating || 0);\n  const reviews = d.reviews || 0;\n  const category = (d.type || \"\").toLowerCase();\n  const price = (d.price || \"\").toString();\n\n  // ✅ FIXED PHONE LOGIC\n  let phone = (d.phone_number || d.phone || \"\").replace(/\\D/g, \"\");\n\n  // Remove +91 if present → keep only 10 digits\n  if (phone.length === 12 && phone.startsWith(\"91\")) {\n    phone = phone.slice(2);\n  }\n\n  // Keep only valid Indian numbers\n  if (phone.length !== 10) {\n    phone = \"\";\n  }\n\n  // 🔥 SCORING LOGIC\n  let score = 0;\n\n  if (rating >= 4.5) score += 2;\n  if (reviews >= 100) score += 1;\n  if (price.includes(\"₹₹₹\")) score += 2;\n  if (\n    category.includes(\"cafe\") ||\n    category.includes(\"bar\") ||\n    category.includes(\"restaurant\")\n  ) score += 1;\n\n  // Priority classification\n  let priority = \"low\";\n  if (score >= 5) priority = \"high\";\n  else if (score >= 3) priority = \"medium\";\n\n  return {\n    json: {\n      name,\n      phone,               // ✅ clean 10-digit (no sheet error)\n      address,\n      category,\n      rating,\n      price,\n      priority,\n      status: \"new\",\n      action: \"call\",\n      last_contact: \"\",\n      attempts: 0,\n      response: \"\",\n      notes: \"\"\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -192,
+        144
+      ],
+      "id": "efec6a86-5114-4188-8e73-00045af32b5d",
+      "name": "Code in JavaScript ( Categorize Leads)"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg",
+          "mode": "list",
+          "cachedResultName": "leads_db",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "name": "={{ $json.name }}",
+            "phone": "={{ $json.phone }}",
+            "category ": "={{ $json.category }}",
+            "address": "={{ $json.address }}",
+            "price ": "={{ $json.price }}",
+            "rating ": "={{ $json.rating }}",
+            "priority": "={{ $json.priority }}",
+            "status ": "={{ $json.status }}",
+            "action": "={{ $json.action }}",
+            "last_contacted": "={{ $json.last_contact }}",
+            "attempts": "={{ $json.attempts }}",
+            "notes": "={{ $json.notes }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "address",
+              "displayName": "address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "category ",
+              "displayName": "category ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "rating ",
+              "displayName": "rating ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "price ",
+              "displayName": "price ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "priority",
+              "displayName": "priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status ",
+              "displayName": "status ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "action",
+              "displayName": "action",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_contacted",
+              "displayName": "last_contacted",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts",
+              "displayName": "attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "responce",
+              "displayName": "responce",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "notes",
+              "displayName": "notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        32,
+        144
+      ],
+      "id": "18624724-e3bf-44ea-a72c-b807de63eb24",
+      "name": "Append row in sheet ( Leads added)",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "w59lxKi4GkNMnhT5",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  return {\n    json: {\n      row_number: item.json.row_number,\n      name: item.json.name,\n      phone: item.json.phone,\n      address: item.json.address,\n      category: item.json.category,\n      rating: item.json.rating,\n      price: item.json.price,\n      priority: item.json.priority,\n      status: \"contacting\",\n      attempts: (item.json.attempts || 0) + 1,\n      action: \"call\"\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -416,
+        656
+      ],
+      "id": "7ea85870-0ea7-41c0-8882-a6a8dcdeed94",
+      "name": "Code in JavaScript1 (process updation status)"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg",
+          "mode": "list",
+          "cachedResultName": "leads_db",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "name": "={{ $json.name }}",
+            "phone": "={{ $json.phone }}",
+            "address": "={{ $json.address }}",
+            "category ": "=",
+            "rating ": "",
+            "price ": "",
+            "action": "={{ $json.action }}",
+            "last_contacted": "",
+            "attempts": "={{ $json.attempts }}",
+            "responce": "",
+            "notes": "",
+            "status ": "={{ $json.status }}",
+            "row_number": "={{ $json.row_number }}",
+            "priority": "={{ $json.priority }}"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "address",
+              "displayName": "address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "category ",
+              "displayName": "category ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "rating ",
+              "displayName": "rating ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "price ",
+              "displayName": "price ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "priority",
+              "displayName": "priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status ",
+              "displayName": "status ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "action",
+              "displayName": "action",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "last_contacted",
+              "displayName": "last_contacted",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attempts",
+              "displayName": "attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "responce",
+              "displayName": "responce",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "notes",
+              "displayName": "notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -192,
+        656
+      ],
+      "id": "1462013e-c476-49e6-aa89-7daa93832583",
+      "name": "Update row in sheet ( Status)",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "w59lxKi4GkNMnhT5",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Lead processing (Phase - 2 )\n\n1 . schedule trigger to start \n\n2. fetch leads to read the leads via get rows to mainly update\n\n3. code node in js just to filter the update status is contacting and attempting +1 like that . \n\n4 . finaly staus is contacting attempting call \n+1 will show via update operation sheets\n",
+        "height": 272,
+        "width": 432
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1584,
+        624
+      ],
+      "typeVersion": 1,
+      "id": "14e6593c-c49f-4b5a-ae80-bd7012a242a4",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Twillio Calling ( Phase - 3 )\n \n1. Webhook used for real time workflow made a file in python test_data to connect with fake lead .\n\n2. if node for true if call gets connected  \n\n3 . twilio node for call used free trial twilio used my number for testing and twilio international number .\n4. sheet updated with status as contacted and notes to submit.",
+        "height": 272,
+        "width": 336
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1680,
+        1136
+      ],
+      "typeVersion": 1,
+      "id": "2454734c-a35f-46fb-b386-386f600614f4",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9e274b50-6318-4224-b101-c4a2bbf48553",
+              "name": "row_number",
+              "value": 2,
+              "type": "number"
+            },
+            {
+              "id": "b0a0e7d5-0838-49a6-b621-fdfad5b06344",
+              "name": "name ",
+              "value": "Test_Cafe",
+              "type": "string"
+            },
+            {
+              "id": "93996971-e80a-4519-8995-ac9effbd7823",
+              "name": "phone ",
+              "value": 9876545525,
+              "type": "string"
+            },
+            {
+              "id": "76b454a1-a71c-4f41-8709-d844c35ccc14",
+              "name": "status ",
+              "value": "new",
+              "type": "string"
+            },
+            {
+              "id": "41aa172f-7f05-4ec4-af53-20aa7123dd87",
+              "name": "attempts",
+              "value": 0,
+              "type": "number"
+            },
+            {
+              "id": "4ddc3742-099f-41b3-9555-52d5dea52f0a",
+              "name": "action",
+              "value": "call",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -656,
+        928
+      ],
+      "id": "eb70a297-197a-4b64-b91a-9c66d5edfcfb",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -896,
+        928
+      ],
+      "id": "c2d39824-d414-46af-b076-709224f6a10f",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  return {\n    json: {\n      ...item.json, // keep everything\n      status: \"contacting\",\n      attempts: (item.json.attempts || 0) + 1\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -432,
+        928
+      ],
+      "id": "e53b4379-7505-4832-87bd-5a5b6c334eef",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg",
+          "mode": "list",
+          "cachedResultName": "leads_db",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $json.row_number }}",
+            "status ": "={{ $json.status }}",
+            "attempts": "={{ $json.attempts }}"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "address",
+              "displayName": "address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "category ",
+              "displayName": "category ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "rating ",
+              "displayName": "rating ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "price ",
+              "displayName": "price ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "priority",
+              "displayName": "priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status ",
+              "displayName": "status ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "action",
+              "displayName": "action",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_contacted",
+              "displayName": "last_contacted",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts",
+              "displayName": "attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "responce",
+              "displayName": "responce",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notes",
+              "displayName": "notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -176,
+        912
+      ],
+      "id": "24d5dbf6-d648-4ed7-a370-cdda9671ee29",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "w59lxKi4GkNMnhT5",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Testing Data \n\n1. manual trigger node for starting the worflow \n\n2. edit fields to add secific field with json accordingly.\n\n3.  code in js to process leads to update as we didi in production one \n\n4. Append in sheet to add test data.",
+        "height": 240,
+        "width": 576
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        112,
+        864
+      ],
+      "typeVersion": 1,
+      "id": "76d3a525-c8c5-4cf4-bc40-75dc27aca01b",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "10fe2a3c-cbef-4d0d-9c11-267a86269f53 ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1104,
+        1216
+      ],
+      "id": "bba902b0-69bb-449c-a2b1-aca0388f66d0",
+      "name": "Webhook",
+      "webhookId": "10fe2a3c-cbef-4d0d-9c11-267a86269f53"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "91ed17da-2dce-4477-9c77-ef0c5bb4c857",
+              "leftValue": "={{$json.body.action}}",
+              "rightValue": "=call",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -816,
+        1232
+      ],
+      "id": "4483075c-ad48-4b9a-b459-e3ca415613bb",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "resource": "call",
+        "from": "+19129137324",
+        "to": "={{ '+91' + $json[\"body\"][\"phone\"] }}",
+        "message": "Hi, this is Ayush from Ninjacart. We work with cafes and pubs in Bangalore for sourcing premium fruits like avocado, berries, and imported items. This is just a quick business check  we don’t ask for any payments or sensitive details.  Is this a good time to talk?",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        -528,
+        1216
+      ],
+      "id": "432ba540-0844-48fa-a38c-ef7e91f5e404",
+      "name": "Make a call",
+      "credentials": {
+        "twilioApi": {
+          "id": "I1qwgHAZQ6lzh2VQ",
+          "name": "Twilio account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "07b2a003-9070-4713-a8dd-77f97f363760",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1168,
+        1584
+      ],
+      "id": "a7361426-81e3-4eb0-8a51-631b2b687e3e",
+      "name": "Webhook1",
+      "webhookId": "07b2a003-9070-4713-a8dd-77f97f363760"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "3947124e-a0bb-498b-a1c4-9ea62ed9d53d",
+              "leftValue": "={{ $json.body.action }}",
+              "rightValue": "whatsapp",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -864,
+        1600
+      ],
+      "id": "8f4c86ef-384b-4226-82e7-cbaf0917e547",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "from": "+14155238886",
+        "to": "={{ '+91' + $json[\"body\"][\"phone\"] }}",
+        "toWhatsapp": true,
+        "message": "Hi, this is Ayush from Ninjacart. We work with cafes and pubs in Bangalore for sourcing premium fruits like avocado, berries, and imported items. This is just a quick business check  we don’t ask for any payments or sensitive details.  Is this a good time to talk?",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        -512,
+        1584
+      ],
+      "id": "e31d6ae4-fe3f-417f-a3e2-b0ccc7a621cc",
+      "name": "Send an SMS/MMS/WhatsApp message",
+      "credentials": {
+        "twilioApi": {
+          "id": "I1qwgHAZQ6lzh2VQ",
+          "name": "Twilio account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg",
+          "mode": "list",
+          "cachedResultName": "leads_db",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status ": "called",
+            "notes": "call placed ",
+            "last_contacted": "={{$now}}",
+            "row_number": 2
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "address",
+              "displayName": "address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "category ",
+              "displayName": "category ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "rating ",
+              "displayName": "rating ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "price ",
+              "displayName": "price ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "priority",
+              "displayName": "priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status ",
+              "displayName": "status ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "action",
+              "displayName": "action",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_contacted",
+              "displayName": "last_contacted",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts",
+              "displayName": "attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "responce",
+              "displayName": "responce",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notes",
+              "displayName": "notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -304,
+        1216
+      ],
+      "id": "533331de-0fe6-42d0-a1ae-55192069b298",
+      "name": "Update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "w59lxKi4GkNMnhT5",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Twilio Whatsapp (Phase - 4 )\n1. same process \n\n2. same if node for false if call not connected \n\n3 . call not connected used twilio whatsapp sandbox for sending the message \n\n4. same updated sheet with last contacted and notes not contacted .",
+        "height": 384,
+        "width": 368
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        64,
+        1440
+      ],
+      "id": "fc96159f-1dc2-4a6e-98db-ab9608d66726",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg",
+          "mode": "list",
+          "cachedResultName": "leads_db",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WJtVvbYYCoet3dIO_GTO-CZQLD2dV3mzkADEa6l1JAg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "notes": "WhatsApp message sent",
+            "last_contacted": "={{ $now }}",
+            "status ": "whatsapp_sent",
+            "row_number": 3
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "address",
+              "displayName": "address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "category ",
+              "displayName": "category ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "rating ",
+              "displayName": "rating ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "price ",
+              "displayName": "price ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "priority",
+              "displayName": "priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status ",
+              "displayName": "status ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "action",
+              "displayName": "action",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_contacted",
+              "displayName": "last_contacted",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts",
+              "displayName": "attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "responce",
+              "displayName": "responce",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notes",
+              "displayName": "notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -272,
+        1584
+      ],
+      "id": "2e7f8323-65ff-4337-bdcc-6467cba38cbb",
+      "name": "Update row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "w59lxKi4GkNMnhT5",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "localhost:5678",
+            "user-agent": "python-requests/2.32.5",
+            "accept-encoding": "gzip, deflate",
+            "accept": "*/*",
+            "connection": "keep-alive",
+            "content-length": "79",
+            "content-type": "application/json"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "row_number": 2,
+            "name": "Test Cafe",
+            "phone": "6200257525",
+            "action": "call"
+          },
+          "webhookUrl": "http://localhost:5678/webhook-test/10fe2a3c-cbef-4d0d-9c11-267a86269f53 ",
+          "executionMode": "test"
+        }
+      }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "localhost:5678",
+            "user-agent": "python-requests/2.32.5",
+            "accept-encoding": "gzip, deflate",
+            "accept": "*/*",
+            "connection": "keep-alive",
+            "content-length": "79",
+            "content-type": "application/json"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "row_number": 2,
+            "name": "Test Cafe",
+            "phone": "6200257525",
+            "action": "call"
+          },
+          "webhookUrl": "http://localhost:5678/webhook-test/07b2a003-9070-4713-a8dd-77f97f363760",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "🟢 Trigger: Start Scraper": {
+      "main": [
+        [
+          {
+            "node": "Fetch_Cafes",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch_pubs",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch_cloud_kitchen",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch_Restaurants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch_Cafes": {
+      "main": [
+        [
+          {
+            "node": "Merge_All_Leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch_pubs": {
+      "main": [
+        [
+          {
+            "node": "Merge_All_Leads",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Fetch_cloud_kitchen": {
+      "main": [
+        [
+          {
+            "node": "Merge_All_Leads",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Fetch_Restaurants": {
+      "main": [
+        [
+          {
+            "node": "Merge_All_Leads",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Merge_All_Leads": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript ( Categorize Leads)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lead Manager Trigger": {
+      "main": [
+        [
+          {
+            "node": "Fetch_Leads(Read_Rows)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch_Leads(Read_Rows)": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1 (process updation status)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript ( Categorize Leads)": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet ( Leads added)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1 (process updation status)": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet ( Status)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Make a call",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Send an SMS/MMS/WhatsApp message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Make a call": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send an SMS/MMS/WhatsApp message": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "cb7248d6-062c-416d-84f4-a4a2a207bc23",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "79157f1d58fd84e01dd854c4019ef63cb90b676ba06cf17f948df519e4eb28e2"
+  },
+  "id": "FizxnRqS3R0ta97w",
+  "tags": []
+}
