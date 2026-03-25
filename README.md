@@ -27,7 +27,7 @@ See [Workflow JSON](https://github.com/akahappygit/n8n-workflow-test/blob/main/w
 
 ##  Workflow Overview (assets Folder)
 
-See [Workflow JSON](https://github.com/akahappygit/AI-Lead-Generation-Automation/blob/main/workflows/Lead%20Scraper.json)
+![Workflow](assets/workflow1.png)
 
 ## 📞 Twilio Integration 
 
