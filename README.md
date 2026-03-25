@@ -24,13 +24,17 @@ Automation workflow built using n8n.
    
 ## Workflow
 See [Workflow JSON](https://github.com/akahappygit/n8n-workflow-test/blob/main/workflows/Lead%20Scraper.json)
-##  Workflow Overview (images)
-![Workflow]([assets/workflow1.png](https://github.com/akahappygit/AI-Lead-Generation-Automation/blob/8c08b303ac9b996a2c0016260878fa11b5848f73/assets/workflow1.png))
 
-## 📞 Twilio Integration (image)
+##  Workflow Overview (assets Folder)
+
+See [Workflow JSON](https://github.com/akahappygit/AI-Lead-Generation-Automation/blob/main/workflows/Lead%20Scraper.json)
+
+## 📞 Twilio Integration 
+
 ![Twilio](assets/twilio%20configuration.png)
 
-## 📊 Output (Google Sheets- image)
+## 📊 Output (Google Sheets)
+
 ![Sheets](https://github.com/akahappygit/AI-Lead-Generation-Automation/blob/main/assets/google%20sheet.png)
 
 ##  Automation Flow
