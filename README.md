@@ -22,17 +22,17 @@ Automation workflow built using n8n.
 3. Add your API credentials (Twilio, Google Sheets, etc.)
 4. Run the workflow
    
-## Workflow 1
+## Workflow JSON
 
 See [Workflow JSON](https://github.com/akahappygit/n8n-workflow-test/blob/main/workflows/Lead%20Scraper.json)
 
-## Workflow 2/3/4/
 
-![Workflow](assets/workflow-steps-2-3-4.png)
-
-##  Workflow Overview (assets Folder)
+##  Workflow Overview -1 (assets Folder)
 
 ![Workflow](assets/workflow1.png)
+
+##  Workflow Overview -2(assets Folder)
+![Workflow Steps](assets/workflow%202-3-4.png)
 
 ## 📞 Twilio Integration 
 
