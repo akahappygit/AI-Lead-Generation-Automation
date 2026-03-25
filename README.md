@@ -16,6 +16,12 @@ Docker (containerization)
 Railway (deployment)
 Webhooks / APIs
 
+## How to Use
+1. Download the JSON file
+2. Import into n8n
+3. Add your API credentials (Twilio, Google Sheets, etc.)
+4. Run the workflow
+   
 ## Workflow
 See [Workflow JSON](https://github.com/akahappygit/n8n-workflow-test/blob/main/workflows/Lead%20Scraper.json)
 
