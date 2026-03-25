@@ -65,7 +65,8 @@ GET
   "message": "Workflow is live"
 }
 
-##  Note
-Live Production link : https://n8n-production-3c1c.up.railway.app
-Credentials (Twilio, Google Sheets, Email, Password) are not included for security reasons.
-Please configure your own API keys before running.
+## Note
+**Live Application:**  
+https://n8n-production-3c1c.up.railway.app
+Credentials (Twilio, Google Sheets, etc.) are excluded for security reasons.  
+Please configure your own API keys before running the workflow.
