@@ -24,6 +24,14 @@ Automation workflow built using n8n.
    
 ## Workflow
 See [Workflow JSON](https://github.com/akahappygit/n8n-workflow-test/blob/main/workflows/Lead%20Scraper.json)
+##  Workflow Overview (images)
+![Workflow](assets/workflow-main.png)
+
+## 📞 Twilio Integration (image)
+![Twilio](assets/twilio-flow.png)
+
+## 📊 Output (Google Sheets- image)
+![Sheets](assets/google-sheets.png)
 
 ##  Automation Flow
 
