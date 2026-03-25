@@ -17,7 +17,7 @@ Railway (deployment)
 Webhooks / APIs
 
 ## Workflow
-See [Workflow JSON](./workflows/Lead%20Scraper.json)
+See workflows/Lead Scraper.json.json
 
 ##  Automation Flow
 
