@@ -28,7 +28,7 @@ See [Workflow JSON](https://github.com/akahappygit/n8n-workflow-test/blob/main/w
 ![Workflow]([assets/workflow1.png](https://github.com/akahappygit/AI-Lead-Generation-Automation/blob/8c08b303ac9b996a2c0016260878fa11b5848f73/assets/workflow1.png))
 
 ## 📞 Twilio Integration (image)
-![Twilio]([assets/twilioconfiguration.png](https://github.com/akahappygit/AI-Lead-Generation-Automation/blob/8c08b303ac9b996a2c0016260878fa11b5848f73/assets/twilio%20configuration.png))
+![Twilio](assets/twilio%20configuration.png)
 
 ## 📊 Output (Google Sheets- image)
 ![Sheets](https://github.com/akahappygit/AI-Lead-Generation-Automation/blob/main/assets/google%20sheet.png)
