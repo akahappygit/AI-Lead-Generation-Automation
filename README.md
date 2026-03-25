@@ -1,4 +1,4 @@
-# AI Lead Scraper Automation (n8n)
+S# AI Lead Scraper Automation (n8n)
 
 Automation workflow built using n8n.
 
@@ -17,7 +17,7 @@ Railway (deployment)
 Webhooks / APIs
 
 ## Workflow
-See workflows/Lead Scraper.json.json
+See [Workflow JSON](https://github.com/akahappygit/n8n-workflow-test/blob/main/workflows/Lead%20Scraper.json)
 
 ##  Automation Flow
 
