@@ -11,10 +11,10 @@ Automation workflow built using n8n.
 - Cloud deployed on Railway
 
 ## Tech Stack
-n8n (workflow automation)
-Docker (containerization)
-Railway (deployment)
-Webhooks / APIs
+- n8n (workflow automation)
+- Docker (containerization)
+- Railway (deployment)
+- Webhooks / APIs
 
 ## How to Use
 1. Download the JSON file
@@ -34,15 +34,15 @@ This workflow performs end-to-end lead processing:
 3. Stores leads in Google Sheets
 4. Triggers Twilio automation:
 
-Automated voice calling (Twilio)
-WhatsApp messaging (Twilio API)
+- Automated voice calling (Twilio)
+- WhatsApp messaging (Twilio API)
 
 ## Integrations Used
 
 - Twilio (Voice Call Automation)
 - Twilio WhatsApp API
 - Google Sheets (Data Storage)
--  Webhooks (API trigger)
+- Webhooks (API trigger)
   
 ##  Workflow Overview
 
@@ -51,10 +51,11 @@ Webhook → Data Processing → Google Sheets → Twilio Call → WhatsApp Messa
 
 ##  Live Demo API 
 
-Endpoint
-https://n8n-production-3c1c.up.railway.app/webhook/demo ( demo production link )
+Endpoint : https://n8n-production-3c1c.up.railway.app/webhook/demo ( demo production link )
+
 Method
 GET
+
 Sample Response ( json )
 {
   "status": "success",
@@ -64,5 +65,5 @@ Sample Response ( json )
 
 ##  Note
 Live Production link : https://n8n-production-3c1c.up.railway.app
-Credentials are not included for security reasons.
+Credentials (Twilio, Google Sheets, Email, Password) are not included for security reasons.
 Please configure your own API keys before running.
